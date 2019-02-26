@@ -1,0 +1,118 @@
+function Button(props){
+        return <button>{props.title}</button>
+    }
+    function TableHead(props){
+        return (
+            <tr>
+                <th>{props.headers[0]}</th>
+                <th>{props.headers[1]}</th>
+                <th>{props.headers[2]}</th>
+                <th>{props.headers[3]}</th>
+            </tr>
+        )
+    }
+    function TableItem(props){
+        return (
+            <tr>
+               <td>{props.data[0]}</td>
+               <td>{props.data[1]}</td>
+               <td>{props.data[2]}</td>
+               <td><Button title='Buy Now'/></td>
+            </tr>
+        )
+    }
+    function ShoppingTable(props){
+        return (
+            <ul>
+            <table>
+               <TableHead headers={['Year','Model','Price','Buy']}/>
+               <TableItem data={props.data}/>              
+            </table>
+        </ul>
+        )
+    }
+    function Cars(props){
+        return (
+        <div>
+            <h2>{props.title}</h2>
+            <ShoppingTable data={['2013','A','$32000']}/>
+            <ShoppingTable data={['2011','B','$4400']}/>
+            <ShoppingTable data={['2016','B','$15500']}/>
+        </div>
+        ) 
+    }
+    function Trucks(props){
+        return (
+        <div>
+            <h2>{props.title}</h2>
+            <ShoppingTable data={['2014','D','$18000']}/>
+            <ShoppingTable data={['2013','E','$5200']}/>
+        </div>
+        )
+    }
+    function Convertibles(props){
+        return (
+        <div>
+            <h2>{props.title}</h2>
+            <ShoppingTable data={['2009','F','$2000']}/>
+            <ShoppingTable data={['2010','G','$6000']}/>
+            <ShoppingTable data={['2012','H','$12500']}/>
+            <ShoppingTable data={['2017','M','$50000']}/>
+        </div>
+        )
+    }
+
+    function ShoppingType(props){
+        return (
+            <div>
+            <Cars title='Cars'/>
+            <Trucks title='Trucks'/>
+            <Convertibles title='Convertibles'/>
+            </div>
+        )
+    }
+
+    function ShoppingTitle(props){
+        return (
+        <div className="title">
+           <h1>{props.title}</h1>
+           <h2>{props.description}</h2>
+           <ShoppingOptions/>
+        </div>
+        )
+    }
+
+    function ShoppingOptions(props){
+        return (
+        <div>
+            <h2>Choose Options</h2>
+            <div>
+             New Only
+             <input type="checkbox" id="coding" name="interest" value="coding" defaultChecked="checked" />
+            </div>
+        
+         Select Type
+         <select>
+           <option value="All">All</option>
+           <option value="Cars">Cars</option>
+           <option value="Trucks">Trucks</option>
+           <option value="Convertibles">Convertibles</option>
+         </select>
+        </div>
+        )
+    }
+    function ShoppingApp(props){
+        return (
+         <div>
+            <ShoppingTitle title="Welcome to React Transportation" description="The best place to buy vehicles online"/>
+            <ShoppingType/>
+         </div>
+        )
+    }
+
+var element = <ShoppingApp/>
+
+    ReactDOM.render(
+            element,
+              document.getElementById("root")
+          )
